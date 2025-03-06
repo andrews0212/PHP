@@ -184,7 +184,7 @@ aqui tenemos un ejemplo
     echo var_dump($dia); // var_dump($dia) es una funcion que muestra todo el contenido del array
     echo "<br>";
     ?>
-  ```
+
 # Arrays Asociativos
 
 * Arrays cuyos keys son String personalizados
@@ -195,12 +195,12 @@ aqui tenemos un ejemplo
 
 |  nombres    |   operador  |   operacion  |
 |-------------|-------------|--------------|
-|    Suma     |      +      |   \$a + \$b    |
-|    Resta    |      -      |   \$a - \$b    |
-|   Divicion  |      /      |   \$a / \$b    |
-| Multiplicacion|    *      |   \$a * \$b    |
-|    Modulo   |      %      |   \$a % \$b    |
-|  exponente  |      **     |   \$a ** \$b   |
+|    Suma     |      +      |   $a + $b    |
+|    Resta    |      -      |   $a - $b    |
+|   Divicion  |      /      |   $a / $b    |
+| Multiplicacion|    *      |   $a * $b    |
+|    Modulo   |      %      |   $a % $b    |
+|  exponente  |      **     |   $a ** $b   |
 
 
 ## Operadores de asignación
@@ -229,12 +229,13 @@ El operando de la izquierda se establece con el valor de la derecha
 * !=
 * <>
 * !==
-* \>
+* >
 * <
-* \>=
+* >=
 * <=
 
 Ejemplo
+
   ```php
   <?php
     $numero1 = 5;
@@ -249,7 +250,7 @@ Ejemplo
     }
   ?>
   ```
-  
+
 ## Operadores de incremento y descremento, logicos y String
 
 En estos operadores tenemos de dos tipos 
@@ -259,20 +260,20 @@ En estos operadores tenemos de dos tipos
 * post-incremento
   * Devuelve el valor e incrementa
   
-  ++\$a Esto seria Pres
-  \$a++ Esto seria Post
-  --\$a
-  \$a--
+  ++$a Esto seria Pres
+  $a++ Esto seria Post
+  --$a
+  $a--
 
 ## Operadores logicos
 
 * Comprueba una o varias condiciones
 * Devuelve True/False
   
-  \$a and \$b
-  \$a or \$b
-  \$a xor \$b esto solo se cumple cuando uno solo es true
-  !\$a
+  $a and $b
+  $a or $b
+  $a xor $b esto solo se cumple cuando uno solo es true
+  !$a
 
 ## Concatenar String
 
@@ -464,6 +465,7 @@ Ejemplos
 Ejemplos
 
   ```php
+
   <?php
 
   // Estructura de control de flujo while
@@ -543,68 +545,10 @@ Ejemplos
       }
     }
     ?>
-   ```
+    ```
 
 ## Estructura de c. de flujo continue
 * Finaliza la iteración actual de la estructura de control e inicia uan nueva iteración
 *  Acepta un argumento
    *  Indica cuántos niveles de bucles se ha de saltar
-  
-  ```php
-  <?php
-  //continue
-  for($i=1;$i<=10;$i++){
-    if($i == 3){ 
-      // con el continue el tres se lo saltaria y no lo imprimiria
-      continue;
-    }
-    echo "Valor de i : " . $i;
-  }
-  ?>
-  ```
-## Sentencias Include
 
-* incluye y evalúa el archivo especificado
-  * embebe el codigo de un fichero php en otro fichero php
-  * si no se encuentra muestra un warning
-  * include_once
-    * Si el codigo del fichero ya ha sido incluido no se vuelve a incluir
-  
-Ejemplo 
-
-  ```php
-  <?php
-  
-  echo "soy el primer fichero";
-  echo "<br>";
-  // esto incluiria en tu codigo lo que posee el include2.php
-  // el include lo puedes repetir las veces que quieras en tu codigo
-  // si utilizamos en vez de include, utilizamos include_once solo lo incluye una vez
-  include "include2.php";
-  ?>
-  ```
-include2.php
-  ```php
-  <?php
-   echo "soy el segundo fichero";
-  ?>
-  ```
-## REQUIERE
-
-* Incluye y evalúa el archivo especificado
-  * Embebe el código de un fichero PHP en otro fichero PHP
-  * si no se encuentra produce un error fatal
-  * require_once
-    * Si el codigo del fichero ya ha sido incluido no se vuelve a incluir
-  
-Ejemplo
-  ```php
-  <?php
-  echo "Soy el primer fichero";
-  echo "<br>"
-  require "include2.php";
-  ?>
-  ```
-## GOTO
-* para saltar a otra sección del código
-  * No recomendable
