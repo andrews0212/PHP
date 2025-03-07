@@ -608,3 +608,362 @@ Ejemplo
 ## GOTO
 * para saltar a otra sección del código
   * No recomendable
+  
+## FUNCIONES CONCEPTOS
+
+* Secuencia de ordenes que hacen una tarea especifica de una aplicacion mas grande.
+* Puede recibir parámetros y puede devolver un resultado.
+
+* Reutilizacion
+* Facil localizar errores
+* No duplicar codigo
+
+## FUNCIONES SINTAXIS
+
+* Definicion de una función 
+
+  function nombre_funcion(parametros){
+    intrucciones;
+    return valor;
+  }
+
+* Llamada a una funcion
+
+  nombre_funcion(parametros);
+  $resultado = nombre_funcion(parametros);
+
+## Funciones return
+
+* valor de devolver
+* cunado consigue el return sale de la funcion
+
+  ```php
+  $numero1 = 5;
+  $numero2 = 10;
+
+  function sumar(){
+      echo "Soy un funcion para sumar";
+  }
+  sumar();
+  function sumarNumeros($num1,$num2){
+    echo $num1 + $num2;
+  }
+  sumarNumeros($numero1, 1);
+  
+  function sumarNumeroRetorno($num1,$num2){
+      return $num1 + $num2;
+  }
+  $resultado = sumarNumeroRetorno($numero1,$numero2)
+  echo $resultado
+  ```
+## Paso por valor y paso por referencia
+
+* Por valor
+  * Si el valor cambia no afecta a la variable original.
+  * Se pasa una "copia".
+* Por referencia
+  * Si el valor cambia afecta a la variable original
+  * No aceptado en la llamada de la funcion
+
+Ejemplo
+
+  ```php
+  <?php
+  
+  function miFuncion($num1){
+    $num1 = $num1 + 2;
+  }
+
+  // esto significa que se va a pasar el valor por referencia
+  function otraFuncion(&$num1){
+    $num1 = $num1 + 2;
+  }
+  $num1 = 4;
+
+  miFuncion($num1);
+  echo $num1; // Esto mostraria 4 
+
+  otraFuncion($num1);
+  echo $num1; // esto mostraria 6
+  ?>
+  ```
+
+## Funcioens Recursividad
+
+* Funciones que se llaman a si misma durante su propia ejecucion
+  
+Ejemplo
+
+  ```php
+  <?php
+    function factorial($n){
+      if($n==1){
+          return 1;
+      }else{
+        echo $n . "x";
+        return $n * factoria($n-1);
+      }
+    }
+  ?>
+  ```
+## Funciones de arrays comparar - ARRAY_DIFF()
+
+* Compara un array con uno o mas array
+* Develve los valores del  primer array que no esten en ninguno de los otros arrays
+  
+  ```php
+  <?php
+    //Funciones para comparar arrays
+
+    $numeros1 = array(11,22,33);
+    $numeros2 = array(11,33,55);
+
+    $colores = array("color1" => "rojo", "color2" => "verde", "color3" => "amarillo" );
+    $colores2 = array("color1" => "verde", "color2" => "azul", "color3" => "rojo");
+
+    $diferencias1 = array_diff($numero1,$numero2);
+    $diferencias2 = array_diff($colores1,$colores2);
+
+    var_dump($diferencias1);
+    var_dump($diferencias2);
+
+    var_dump($)
+  
+  ?>
+  ```
+## ARRAY_MERGE 
+
+* Permite unir dos arrays
+
+  ```php
+  
+  <?php
+  
+      $a1 = array("rojo","verde");
+      $a2 = array("azul","amarillo");
+
+      $unido = array_merge($a1,$a2)
+  
+  
+  ?>
+  ```
+
+## Ordenar Arrays
+
+### Funciones de arrays ordeenar - sort
+
+* Actua sobre el propio array, no crea uno nuevo
+* Ordena por valor de menor a mayor
+* Si dos miembrosson iguales su oder sera indefinido
+* en orden inverso
+  * rsort();
+
+Ejemplos
+
+  ```php
+  <?php
+  $dias = array("Lunes","Martes","Miercoles","Jueves", "Viernes", "Sabado", "Domingo");
+
+  var_dump($dias);
+  echo "<br>"
+  // Esto lo ordena por orden alfabetico
+  sort($dias);
+  var_dump($dias);
+  echo "<br>";
+  ?>
+  ```
+
+### Funcion de arrays ordenar - ASORT 
+
+* Ordena pero mantiene las key
+
+Ejemplos
+
+  ```php
+  <?php
+  $dias = array("Lunes","Martes","Miercoles","Jueves", "Viernes", "Sabado", "Domingo");
+
+  var_dump($dias);
+  echo "<br>"
+  // Esto lo ordena por orden alfabetico
+  asort($dias);
+  var_dump($dias);
+  echo "<br>";
+  ?>
+  ```
+  ### Funcion de arrays ordenar - KSORT
+
+   * Ordena por las key
+  
+  ```php
+  <?php
+  $numeros = array(10,11,8,103,99,54);
+  var_dump($dias);
+  echo "<br>";
+
+  ksort($numeros); // esto no cambia si son numeros
+  var_dump($dias);
+  echo "<br>";
+  ?>
+  $arrayNombres = array("Javier" => 29, "Patricia" => 28, "Andrews" => 22);
+  ksort($arrayNombres);
+  var_dump($arrayNombres);
+  echo "<br>"
+  ```
+### Funciones de arrays ordenar - Shuffle()
+
+* Crea un orden aleatorio de los elementos
+* Asigna nuevos keys a los elementos
+
+Ejemplo
+
+  ```php
+  $numeros = array(10,11,8,103,99,54);
+  shuffle($numeros); // te cambia a un orden aleatorio
+  var_dump($numeros);
+  ```
+
+## Modificar array
+
+### Funcion arrays modificar - Array_Shisft()
+
+* Quita el primer elemento del array y lo devuelve
+
+### Funcion arrays modificar - Array_unshift()
+
+* Añade los elementos pasados al inicio de array
+* Devuelve el numero de elementos del array
+
+Ejemplos
+
+  ```php
+  <?php
+  
+  // Funciones para modificar ele array
+  $frutas = array("naranja","platano","manzana","frambuesa");
+  var_dump($frutas);
+  echo "<br>";
+  // esto borra el primer elemento y lo devuelve
+  $eliminado = array_shift($frutas);
+  var_dump($frutas)
+  echo "<br>";
+  // añadir un elemento al principio del array
+  array_unshift($frutas,"pera");
+
+  ?>
+  ```
+
+### Funcion arrays modificar - Array_Pop()
+
+  * Quita  el ultimo elemento del array y lo devuelve
+
+## Funcion arrays modificar - Array_Push()
+
+  * Insertar uno o mas elementos al final de array
+  * Devuelve el numero de elementos del array
+
+Ejemplos
+
+  ```php
+  <?php
+  $frutas = array("naranja","platano","manzana","frambuesa");
+  var_dump($frutas);
+  echo "<br>";
+  // esto borra el ultimo elemento y lo devuelve
+  $eliminado = array_pop($frutas);
+  var_dump($frutas)
+  echo "<br>";
+  // esto meteria el elemento pera en el array
+  array_push($frutas, "pera");
+  var_dump($frutas);
+  echo "<br>";
+  ?>;
+  ```
+## Funciones interesantes para arrray
+
+### Funcion count()
+
+* Te devuelve la longitud del array
+
+### funcion Reset()
+
+* Rebobina el punter interno de un array al primer elemento
+  * Un puntero es como una flecha que apunta a un elemento del array
+* las funciones de modificacion como el array_shift y array_pop ejecuntan un reset() despues de su utilizacion
+
+### Funcion current()   
+* Devuelve el elemento actual del array
+
+### funcion Array_Search() 
+* Busca el elemento del array y te devuelvve su key
+
+### Funcion end()
+* Coloca el puntero al ultimo elemento del array
+
+## Fecha y hora
+
+### Funciones fecha y hora conceptos
+
+* Permiten obtener la fecha y la hora del servidor
+* Se pueden emplear para dar formato a fechas y horas
+* forman parte del nucleo de php
+* Su comportamiento depende de php.init
+  * latitud y longitud definidos
+  * zona horaria
+
+### Funcion date()
+
+* Devuelve una fecha con un formato concreto
+
+Ejemplo
+  ```php
+  <?php
+  echo date("Y");
+  echo "<br>"
+  echo date("d M y");
+  echo "<br>"
+  echo date("d/m/Y");
+  ?>
+  ```
+### Funcion getDate()
+* Te devuelve un array asociativo con informacion de la fecha y de la hora
+
+Ejemplos
+ ```php
+  <?php
+  //Funcion getDate()
+  $hoy = getdate();
+  var_dump($hoy);
+  if ($hoy["month"] == "May"){
+    echo "Mayo";
+  }
+  ?>
+  ```
+### Funcion Date_Default_Timezone_get()
+
+* Obtine la zona horaria preterminada
+  
+### Funcion Date_Default_Timezone_set();
+
+* Puedes definir una zona horaria
+
+## Framework
+
+* Entorno o marco de trabajo
+* Provee una metodologia(normas) de trabajo
+* Un esquema(patron) para el desarrollo y implementacion de una aplicacion
+* No necesario plantearse una estructura de la app, el framework proporciona un equeleto que "rellenar"
+
+### Funciones
+* Propocionan bibliotecas de codigo pra funciones de uso comun
+* Reduce la cantidad de  codigo original a escribir
+* Ayuda al trabajo en equipo
+
+## Ejemplos de framewor
+
+* Laravel
+  * Crear complejos sitios y apps web haciendo uso de una estructura ya definida
+* Symphony
+  * Desarrollar sitios y apps Web con el MVC
+* Codeigniter
+  * Crear complejos sitios y apps web haciendo uso de una estructura ya definida
